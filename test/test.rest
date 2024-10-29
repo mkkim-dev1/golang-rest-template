@@ -1,0 +1,59 @@
+### 서버 기본 주소 설정
+@baseUrl = http://localhost:8080
+
+### 1. 새 책 생성 - 샘플 데이터 1
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+    "title": "Golang Testing",
+    "author": "Author A"
+}
+
+### 2. 새 책 생성 - 샘플 데이터 2
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+    "title": "Learning Gin Framework",
+    "author": "Author B"
+}
+
+### 3. 새 책 생성 - 샘플 데이터 3
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+    "title": "RESTful APIs in Go",
+    "author": "Author C"
+}
+
+### 4. 새 책 생성 - 샘플 데이터 4
+POST {{baseUrl}}/books
+Content-Type: application/json
+
+{
+    "title": "Advanced GORM",
+    "author": "Author D"
+}
+
+### 5. 모든 책 조회 (GET /books)
+GET {{baseUrl}}/books
+
+### 6. ID로 특정 책 조회 (GET /books/:id)
+# 아래의 1 부분을 실제 데이터베이스에 있는 책 ID로 교체하여 사용
+GET {{baseUrl}}/books/1
+
+### 7. 책 업데이트 (PUT /books/:id)
+# 아래의 1 부분을 실제 데이터베이스에 있는 책 ID로 교체하여 사용
+PUT {{baseUrl}}/books/1
+Content-Type: application/json
+
+{
+    "title": "Updated Golang Book",
+    "author": "Author B"
+}
+
+### 8. 책 삭제 (DELETE /books/:id)
+# 아래의 1 부분을 실제 데이터베이스에 있는 책 ID로 교체하여 사용
+DELETE {{baseUrl}}/books/1

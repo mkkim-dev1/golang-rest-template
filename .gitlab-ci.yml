@@ -1,0 +1,21 @@
+stages:
+  - build
+
+build_and_push:
+  stage: build
+  image: docker:20.10.17
+  services:
+    - docker:20.10.17-dind
+  variables:
+    IMAGE: "${REGISTRY_URL}/${USER_NAME}/${CI_PROJECT_NAME}:${CI_COMMIT_SHA}"
+    DOCKER_HOST: "tcp://${DOCKER_HOST}"
+    DOCKER_TLS_CERTDIR: ""
+  script:
+    - if [ ! -f Dockerfile ]; then echo "Dockerfile not found. Build aborted."; exit 1; fi
+    - docker --version
+    - docker login -u ${USER_NAME} -p ${USER_PASSWORD} ${REGISTRY_URL}
+    - docker build -t ${IMAGE} .
+    - docker push ${IMAGE}
+  only:
+    - main
+
