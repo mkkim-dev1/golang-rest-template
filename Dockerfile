@@ -14,10 +14,13 @@ RUN go mod download
 COPY . .
 
 # 6. 애플리케이션 빌드
-RUN CGO_ENABLED=1 GOOS=linux go build -o app .
+RUN CGO_ENABLED=1 GOOS=linux go build -o app -a -ldflags '-linkmode external -extldflags "-static"' .
 
-# 2. Final Stage
-FROM debian:bullseye-slim
+# 프로덕션용
+# FROM scratch
+
+# 개발용 
+FROM alpine:latest
 
 # 필요한 패키지 설치
 RUN apt-get update && apt-get install -y \
