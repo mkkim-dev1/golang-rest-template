@@ -22,11 +22,6 @@ RUN CGO_ENABLED=1 GOOS=linux go build -o app -a -ldflags '-linkmode external -ex
 # 개발용 
 FROM alpine:latest
 
-# 필요한 패키지 설치
-RUN apt-get update && apt-get install -y \
-    sqlite3 libsqlite3-0 && \
-    rm -rf /var/lib/apt/lists/*
-
 # 8. 빌드된 애플리케이션 복사
 COPY --from=builder /app/app .
 
