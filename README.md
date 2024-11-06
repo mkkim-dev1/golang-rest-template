@@ -70,14 +70,22 @@ Websocket을 이용한 Chat 서비스를 구현한 코드 입니다.
 
 이 프로젝트를 실행하기 위한 단계는 다음과 같습니다.
 
+### DB 선택
+지원되는 Database 연결은 sqlite 와 mysql 이 있습니다.
+환경 변수에서 DB_KIND를 변경 하실 수 있습니다.
+
+- SQL Lite: sqlite
+- Mysql(MariaDB): mysql
+
 ### 프로젝트 클론 및 설정 파일 생성
 1. 프로젝트를 클론하거나 생성한 후, 프로젝트 폴더로 이동합니다.
 2. 프로젝트 루트에 .env 파일을 생성하고 서버 포트와 데이터베이스 경로를 설정합니다.
 
 .env 예시
 ``` bash
+DB_KIND=sqlite
 SERVER_PORT=8080
-DATABASE_PATH=test.db
+DSN=test.db
 ```
 
 ### 의존성 설치

@@ -9,8 +9,9 @@ import (
 
 // Config 구조체 정의
 type Config struct {
-	ServerPort   string
-	DatabasePath string
+	DbKind     string
+	ServerPort string
+	DSN        string
 }
 
 // 전역 Config 변수
@@ -26,8 +27,9 @@ func InitConfig() *Config {
 
 	// 환경 변수에서 설정 값 가져오기
 	AppConfig = &Config{
-		ServerPort:   getEnv("SERVER_PORT", "8080"),
-		DatabasePath: getEnv("DATABASE_PATH", "test.db"),
+		DbKind:     getEnv("DB_KIND", "sqlite"),
+		ServerPort: getEnv("SERVER_PORT", "8080"),
+		DSN:        getEnv("DSN", "test.db"),
 	}
 
 	return AppConfig
